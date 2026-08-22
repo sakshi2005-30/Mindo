@@ -43,5 +43,5 @@ export const contentSchema=new Schema<IContent>({
     }
 },{timestamps:true});
 contentSchema.index({userId:1,tags:1});
-contentSchema.index({title:1,description:1});
+contentSchema.index({title:"text",description:"text"});
 export const Content=model<IContent>("Content",contentSchema);
