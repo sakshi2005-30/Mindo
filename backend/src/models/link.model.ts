@@ -11,9 +11,9 @@ const linkSchema=new Schema<ILink>({
         unique:true
     },
     userId:{
-        types:Schema.Types.ObjectId,
+        type:Schema.Types.ObjectId,
         required:true,
-        ref:"user",
+        ref:"User",
         unique:true
     }
 })
