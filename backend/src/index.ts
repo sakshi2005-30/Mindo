@@ -3,11 +3,13 @@ import dotenv from "dotenv";
 dotenv.config();
 import { connectToDB } from "./config/db.js";
 import userRoutes from "./routes/user.routes.js";
+import contentRoutes from "./routes/content.routes.js"
 import cookieParser from "cookie-parser";
 const app=express();
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api/v1/users",userRoutes);
+app.use("/api/v1/content",contentRoutes);
 const PORT:number=Number(process.env.PORT) || 3000;
 const startServer=async():Promise<void>=>{
     try{

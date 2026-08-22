@@ -16,7 +16,7 @@ const generateToken=(id:string,res:Response):string=>{
     if(!secret){
         throw new Error("JWT_SECRET is not defined in .env file");
     }
-    const token=jwt.sign({id},secret,{expiresIn:"7d"});
+    const token=jwt.sign({userId:id},secret,{expiresIn:"7d"});
     res.cookie("token",token,COOKIE_OPTIONS);
     return token;
 }
