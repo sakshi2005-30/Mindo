@@ -2,8 +2,10 @@
 
 @theme{
     --color-light:#fdfdf5;
-    --color-blue:#3d568f
+    --color-blue:#3d568f;
+    --color-light-blue:#e2eafb
 }
 body{
     background-color: var(--color-light);
+    font-family: sans-serif;
 }

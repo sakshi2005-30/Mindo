@@ -8,9 +8,9 @@ interface ButtonProps{
 }
 const styleVariants={
     primary:"bg-blue text-white hover:bg-blue/90 hover:shadow-lg hover:shadow-blue/30",
-    secondary:"border border-blue text-blue hover:bg-blue/10"
+    secondary:"bg-light-blue text-blue hover:shadow-lg hover:shadow-blue/20"
 }
-const defaultStyles= "px-6 py-1.5 rounded-lg text-sm flex justify-center items-center gap-2 transition-all font-medium cursor-pointer hover:-translate-y-1 duration-200 m-4 trnaform"
+const defaultStyles= "px-6 py-1 rounded-lg text-sm flex justify-center items-center gap-2 transition-all  cursor-pointer hover:-translate-y-1 duration-200 m-4 trnaform"
 
 export const Button=(props:ButtonProps)=>{
     return (
