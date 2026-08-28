@@ -5,10 +5,20 @@ interface cardProps{
     title:string,
     contentType:string,
     description?:string,
-    tags?:string[]
+    tags?:string[],
+    link:string
 }
 const contentAndTagStyles="inline-block text-xs bg-light-blue text-blue px-2 py-0.5 rounded font-medium"
 
+const getEmbedUrl = (url: string) => {
+  if (url.includes("embed/")) return url
+  const videoId = url.split("v=")[1]?.split("&")[0] || url.split("/").pop()
+  return `https://www.youtube.com/embed/${videoId}`
+}
+const getEmbedTwitter=(url:string)=>{
+    url.replace("x.com","twitter.com");
+    return url;
+}
 export const Card=(props:cardProps)=>{
     return (
         <div className="w-74 bg-white border rounded-lg flex flex-col items-left px-6 py-4 border-gray-200 m-6 shadow-md gap-6">
@@ -16,14 +26,32 @@ export const Card=(props:cardProps)=>{
             {props.contentType==="twitter" &&(
                 <div className="">
                 <div className=" border border-gray-200 rounded-lg h-32 w-full overflow-hidden">
-                <blockquote className="twitter-tweet" >
+                {/* <blockquote className="twitter-tweet" >
                     <a href={ "https://twitter.com/Spidey_707/status/2091771500470915233"}></a>
+                </blockquote> */}
+                 <blockquote className="twitter-tweet" >
+                    <a href={ getEmbedTwitter(props.link)}></a>
                 </blockquote>
                 </div>
             </div> 
             )}
              {/* youtube embed */}
-             
+             {props.contentType==="youtube" && (
+                <div > <iframe
+                className="w-full h-full border-0 rounded-lg"
+                src={getEmbedUrl(props.link)}
+                title={props.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                
+            /></div>
+             )}
+            {props.contentType=="link" &&(
+               <div>
+                    
+               </div> 
+            )}
             <div className="flex flex-col gap-2">
                 {/* contentType */}
                 <div> <span className={`${contentAndTagStyles} uppercase`}>
