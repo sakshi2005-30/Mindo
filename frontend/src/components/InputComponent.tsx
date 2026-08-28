@@ -7,7 +7,7 @@ interface inputProps{
     onChange?:(e:React.ChangeEvent<HTMLInputElement>)=>void,
     required?:boolean
 }
-const InputComponent = (props:inputProps) => {
+export const Input = (props:inputProps) => {
   return (
     <div className="flex flex-col gap-2 ">
       <label className="text-xs font-medium uppercase flex gap-1">{props.label}{!props.required &&<span className="lowercase text-gray-400">(optional)</span>}</label>
@@ -22,4 +22,3 @@ const InputComponent = (props:inputProps) => {
   )
 }
 
-export default InputComponent

@@ -1,7 +1,9 @@
-import InputComponent from "./components/InputComponent"
+import {Input} from "./components/InputComponent"
 import { Button } from "./components/ui/Button"
 import { Card } from "./components/ui/Card"
 import { PlusIcon, ShareIcon } from "./icons/PlusIcon"
+import { Signin } from "./Signin"
+import { Signup } from "./SignUp"
 
 const App = () => {
   return (
@@ -16,9 +18,10 @@ const App = () => {
      <Card title="Learning typescript" description="A comprehensive guide to the Zettelkasten note-taking method pioneered by Niklas Luhmann." contentType="link" tags={["learn","code","twitter"]} link="https://x.com/Sakshi_305/status/2091618130439315966"/>
      
       </div>
-      <div className="m-10"> <InputComponent type="text" placeholder="Enter name" value="name" label="enter name"/></div>
+      
      
-    
+      <Signup/>
+      <Signin/>
     </div>
   )
 }
