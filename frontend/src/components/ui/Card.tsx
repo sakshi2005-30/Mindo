@@ -1,7 +1,6 @@
 import { Copy, Trash } from "../../icons/PlusIcon"
 
 interface cardProps{
-    
     title:string,
     contentType:string,
     description?:string,
@@ -26,9 +25,6 @@ export const Card=(props:cardProps)=>{
             {props.contentType==="twitter" &&(
                 <div className="">
                 <div className=" border border-gray-200 rounded-lg h-32 w-full overflow-hidden">
-                {/* <blockquote className="twitter-tweet" >
-                    <a href={ "https://twitter.com/Spidey_707/status/2091771500470915233"}></a>
-                </blockquote> */}
                  <blockquote className="twitter-tweet" >
                     <a href={ getEmbedTwitter(props.link)}></a>
                 </blockquote>

@@ -2,6 +2,7 @@ import React,{useState} from "react"
 import axios from "axios"
 import { Input } from "./components/InputComponent"
 import { api } from "./services/api"
+import { CrossIcon } from "./icons/PlusIcon"
 
 export const Signin=()=>{
     const [username,setUsername]=useState<string>("");
@@ -17,7 +18,7 @@ export const Signin=()=>{
         setLoading(true)
         try{
             const response=await api.post("/users/signin",{username,password});
-            setSuccess(response.data.mesage ||"Signed in successfully");
+            setSuccess(response.data.message ||"Signed in successfully");
          
             setUsername("");
             setPassword("");
@@ -32,12 +33,17 @@ export const Signin=()=>{
           setLoading(false);
     }
     return (
-        <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+        <div className="min-h-screen fixed inset-0 bg-black/30 z-50 flex items-center justify-center p-4 backdrop-blur-xs">
             <div className="w-full sm:w-74 bg-white border rounded-lg flex flex-col items-left px-4 sm:px-6 py-6 border-gray-200 m-2 sm:m-6 shadow-md gap-4 sm:gap-6">
                 {/* header */}
                <div className="flex flex-col gap-1">
-                    <h1 className="text-lg font-medium text-blue">Sign Up</h1>
-                    <p className="text-xs text-gray-400">Create an account to manage your links</p>
+                <div className="flex justify-between">
+                     <h1 className="text-lg font-medium text-blue">Sign In</h1>
+                     <div className="hover:bg-light-blue p-2 rounded-full hover:text-blue transition-all duration-300 cursor-pointer"> <CrossIcon size="md" /></div>
+                    
+                </div>
+                   
+                    <p className="text-xs text-gray-400">Sign in to your account </p>
              </div>
              {error && (
           <div className="bg-red-50 border border-red-200 text-red-600 text-xs p-2.5 rounded-lg">
