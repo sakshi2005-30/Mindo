@@ -2,19 +2,22 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Input } from "../InputComponent";
 import { api } from "../../services/api";
-import { CrossIcon } from "../../icons/PlusIcon";
-
+import { CrossIcon } from "../icons/PlusIcon";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 interface signInProps {
   onSwitchToSignUp: () => void;
 }
 export const Signin = (props: signInProps) => {
+  const navigate = useNavigate();
+  const { signin } = useAuth();
   const [username, setUsername] = useState<string>("");
 
   const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
-  const handleSubmit = async (e: React.ChangeEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
     setSuccess("");
@@ -22,9 +25,10 @@ export const Signin = (props: signInProps) => {
     try {
       const response = await api.post("/users/signin", { username, password });
       setSuccess(response.data.message || "Signed in successfully");
-
+      await signin();
       setUsername("");
       setPassword("");
+      navigate("/dashboard");
     } catch (err: any) {
       if (axios.isAxiosError(err) && err.response) {
         setError(err.response.data.message || "Signup failed");

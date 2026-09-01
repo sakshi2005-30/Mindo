@@ -1,7 +1,11 @@
-import {Router} from "express";
-import { signup,signin,logout } from "../controllers/user.controller.js";
+import type{Request,Response} from "express";
+import { Router } from "express";
+import { signup,signin,logout,me } from "../controllers/user.controller.js";
+import { userMiddleware } from "../middlewares/user.middleware.js";
+import { User } from "../models/user.model.js";
 const router=Router();
 router.post("/signup",signup);
 router.post("/signin",signin);
 router.post("/logout",logout);
+router.get("/me",userMiddleware,me);
 export default router;

@@ -111,3 +111,31 @@ export const logout=async(req:Request,res:Response):Promise<void>=>{
         })
     }
 }
+export const me=async(req:Request,res:Response):Promise<void>=>{
+    try{
+       const id=req.userId;
+       if(!id){
+        res.status(400).json({
+            message:"User should be authenticated"
+        });
+        return;
+       }
+       const user=await User.findById(id);
+       if(!user){
+        res.status(400).json({
+            message:"No such user present"
+        });
+        return;
+       }
+       res.status(200).json({
+        user:user
+       })
+
+    }
+    catch(error){
+        console.log("Error in getting user",error);
+        res.status(500).json({
+            message:"Internal server error"
+        })
+    }
+}
