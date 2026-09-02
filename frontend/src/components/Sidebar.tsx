@@ -1,6 +1,6 @@
 
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext"
+import { useAuth } from "../context/AuthContext"
 import {
   BrainIcon,
   HomeIcon,
@@ -8,7 +8,7 @@ import {
   TwitterIcon,
   LinkIcon,
   LogoutIcon,
-} from "../icons/PlusIcon";
+} from "./icons/PlusIcon";
 
 export const Sidebar = () => {
   const { user, logout } = useAuth();

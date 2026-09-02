@@ -3,7 +3,7 @@ interface contentProps{
 }
 export const ContentFeed = (props:contentProps) => {
   return (
-    <div>ContentFees</div>
+    <div>ContentFeed</div>
   )
 }
 

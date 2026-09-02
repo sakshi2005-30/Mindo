@@ -1,6 +1,6 @@
 import React from "react";
 interface inputProps{
-    label:string,
+    label?:string,
     type:string,
     value:string,
     placeholder?:string,

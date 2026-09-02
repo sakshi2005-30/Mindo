@@ -1,5 +1,5 @@
-import { Signin } from "../components/ui/Signin";
-import { Signup } from "../components/ui/SignUp";
+import { Signin } from "../components/Signin";
+import { Signup } from "../components/SignUp";
 import { useState } from "react";
 export const AuthLayout = () => {
   const [authType, setAuthType] = useState<"signin" | "signup">("signup");
