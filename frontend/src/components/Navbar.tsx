@@ -27,14 +27,14 @@ export const Navbar = ({
         return "Twitter / X";
       case "urls":
       case "link":
-        return "Saved URLs";
+        return "URLs";
       default:
         return "My Brain";
     }
   };
 
   return (
-    <header className="h-20 bg-white/80 backdrop-blur-md border-b border-gray-100 flex items-center justify-between px-8 sticky top-0 z-30">
+    <header className="h-16 bg-white/80 backdrop-blur-md border-b border-gray-100 flex items-center justify-between px-8 sticky top-0 z-30">
     
       <h1 className="text-lg font-bold font-serif text-gray-900 tracking-tight">
         {getHeaderTitle()}
@@ -62,12 +62,14 @@ export const Navbar = ({
           variant="secondary"
           title="Share Brain"
           startIcon={<ShareIcon size="md" />}
+
         ></Button>
 
         {/* Add Content Button */}
         <Button
           title="Add Content"
           variant="primary"
+          onClick={onOpenAddModal}
           startIcon={<PlusIcon size="md" />}
         ></Button>
       </div>

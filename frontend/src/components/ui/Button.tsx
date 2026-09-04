@@ -5,6 +5,8 @@ interface ButtonProps{
     variant:"primary"|"secondary",
     startIcon?:ReactElement,
     endIcon?:ReactElement
+    onClick?:()=>void,
+    type?:"submit"|"reset"|"button"
 }
 const styleVariants={
     primary:"bg-blue text-white hover:bg-blue/90 hover:shadow-lg hover:shadow-blue/30",
@@ -14,7 +16,7 @@ const defaultStyles= "px-6 py-1.5 rounded-lg text-sm flex justify-center items-c
 
 export const Button=(props:ButtonProps)=>{
     return (
-        <button className={`${defaultStyles} ${styleVariants[props.variant]}`}>
+        <button type={props.type ||"button"} onClick={props.onClick} className={`${defaultStyles} ${styleVariants[props.variant]}`}>
        {props.startIcon && <span className="shrink-0">{props.startIcon}</span>}
         {props.title}
         {props.endIcon && <span className="shrink-0">{props.endIcon}</span>}
