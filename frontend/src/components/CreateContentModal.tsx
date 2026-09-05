@@ -42,7 +42,7 @@ export const CreateContentModal = ({
     setError("");
     setLoading(true);
 
-    // Convert comma-separated string into an array of clean tags
+   
     const formattedTags = tagsInput
       .split(",")
       .map((tag) => tag.trim().replace(/^#/, ""))
@@ -55,7 +55,7 @@ export const CreateContentModal = ({
         type: selectedType,
         contentType: selectedType,
         description,
-        tags: formattedTags, // Added tags array here
+        tags: formattedTags, 
       });
 
       // Reset form
@@ -98,7 +98,7 @@ export const CreateContentModal = ({
         )}
 
         {/* Form Body */}
-        <form  className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <Input
             label="Title"
             type="text"
@@ -164,7 +164,7 @@ export const CreateContentModal = ({
               onClick={onClose}
             />
             <Button
-             
+              type='submit'
               variant="primary"
               title={loading ? "Adding..." : "Submit"}
             />

@@ -62,6 +62,7 @@ export const Navbar = ({
           variant="secondary"
           title="Share Brain"
           startIcon={<ShareIcon size="md" />}
+          onClick={onOpenShareModal}
 
         ></Button>
 
