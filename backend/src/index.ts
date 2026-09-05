@@ -8,10 +8,26 @@ import contentRoutes from "./routes/content.routes.js"
 import linkRoutes from "./routes/link.routes.js"
 import cookieParser from "cookie-parser";
 const app=express();
-app.use(cors({
-    origin: process.env.FRONTEND_URL || "*",
-    credentials:true
-}))
+const rawFrontendUrl = process.env.FRONTEND_URL || "";
+const cleanFrontendUrl = rawFrontendUrl.replace(/\/$/, "");
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  cleanFrontendUrl,
+].filter(Boolean);
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin.replace(/\/$/, ""))) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api/v1/users",userRoutes);
