@@ -57,6 +57,8 @@ export const ShareBrainModal = ({ isOpen, onClose }: ShareBrainModalProps) => {
 
   if (!isOpen) return null;
 
+  const isShared = Boolean(shareUrl);
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
       <div className="w-full max-w-md bg-white border border-gray-100 rounded-2xl shadow-xl p-6 flex flex-col gap-6">
@@ -85,41 +87,46 @@ export const ShareBrainModal = ({ isOpen, onClose }: ShareBrainModalProps) => {
           </div>
         )}
 
+        {/* Toggle Switch */}
+        <div className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200/80 rounded-xl">
+          <span className="text-xs font-semibold text-gray-700">
+            Public Access
+          </span>
+          <button
+            type="button"
+            disabled={loading}
+            onClick={() => handleToggleShare(!isShared)}
+            className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
+              isShared ? "bg-blue-600" : "bg-gray-300"
+            } ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+          >
+            <span
+              className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
+                isShared ? "translate-x-5" : "translate-x-0"
+              }`}
+            />
+          </button>
+        </div>
+
+        {/* URL Box & Actions */}
         {shareUrl ? (
           <div className="flex flex-col gap-4">
             <div className="p-3 bg-gray-50 border border-gray-200 rounded-xl text-xs text-gray-700 font-mono break-all select-all">
               {shareUrl}
             </div>
 
-            <div className="flex items-center justify-between pt-2 border-t border-gray-100">
-              <button
-                type="button"
-                onClick={() => handleToggleShare(false)}
-                disabled={loading}
-                className="text-xs font-semibold text-red-500 hover:text-red-700 transition cursor-pointer"
-              >
-                Disable Share Link
-              </button>
-
-              <div className="flex gap-2">
-                <Button variant="secondary" title="Close" onClick={onClose} />
-                <Button
-                  variant="primary"
-                  title={copied ? "Copied!" : "Copy Link"}
-                  onClick={handleCopy}
-                />
-              </div>
+            <div className="flex justify-end gap-2 pt-2 border-t border-gray-100">
+              <Button variant="secondary" title="Close" onClick={onClose} />
+              <Button
+                variant="primary"
+                title={copied ? "Copied!" : "Copy Link"}
+                onClick={handleCopy}
+              />
             </div>
           </div>
         ) : (
           <div className="flex justify-end gap-3 mt-2">
             <Button variant="secondary" title="Cancel" onClick={onClose} />
-            <Button
-              variant="primary"
-              title={loading ? "Generating..." : "Generate Share Link"}
-             
-              onClick={() => handleToggleShare(true)}
-            />
           </div>
         )}
       </div>

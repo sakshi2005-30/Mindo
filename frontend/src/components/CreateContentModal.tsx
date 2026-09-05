@@ -147,7 +147,7 @@ export const CreateContentModal = ({
                     onClick={(e) => handleTypeSelect(e, t)}
                     className={`py-2 text-xs font-medium rounded-xl border capitalize transition-all cursor-pointer ${
                       isActive
-                        ? "bg-blue-50 border-blue-600 text-blue-600 font-bold shadow-sm"
+                        ? "bg-blue-50 border-blue text-blue font-bold shadow-sm"
                         : "bg-white border-gray-200 text-gray-600 hover:bg-gray-50"
                     }`}
                   >
