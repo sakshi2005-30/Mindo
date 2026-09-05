@@ -7,6 +7,7 @@ interface cardProps {
   description?: string;
   tags?: string[];
   link: string;
+  showDelete?:boolean,
   onDelete?:(id?:string)=>void
 }
 const contentAndTagStyles =
@@ -123,12 +124,14 @@ export const Card = (props: cardProps) => {
           <Copy size="md" />
           {copied ? "Copied!" : "Copy Link"}
         </button>
-        <button
-          className="bg-red-200 text-red-600 px-2 py-1 rounded-lg hover:shadow-lg hover:shadow-red-400/20 cursor-pointer transition transform duration-300 hover:-translate-y-0.5"
-          onClick={() => props.onDelete && props.onDelete(props.id)}
-        >
-          <Trash size="md" />
-        </button>
+        {!props.showDelete && (
+          <button
+            className="bg-red-200 text-red-600 px-2 py-1 rounded-lg hover:shadow-lg hover:shadow-red-400/20 cursor-pointer transition transform duration-300 hover:-translate-y-0.5"
+            onClick={() => props.onDelete && props.onDelete(props.id)}
+          >
+            <Trash size="md" />
+          </button>
+        )}
       </div>
     </div>
   );
