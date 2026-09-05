@@ -5,12 +5,13 @@ import cookie from "cookie-parser";
 import type {Request,Response} from "express";
 import dotenv from "dotenv";
 dotenv.config();
-const COOKIE_OPTIONS={
-    httpOnly:true,
-    secure:process.env.NODE_ENV === "production",
-sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-    maxAge:24*60*60*1000
-}
+const isProduction = process.env.NODE_ENV === "production";
+const COOKIE_OPTIONS = {
+  httpOnly: true,
+  secure: isProduction, // Required when sameSite is "none"
+  sameSite: isProduction ? ("none" as const) : ("lax" as const),
+  maxAge: 24 * 60 * 60 * 1000,
+};
 const generateToken=(id:string,res:Response):string=>{
     const secret=process.env.JWT_SECRET;
     if(!secret){
