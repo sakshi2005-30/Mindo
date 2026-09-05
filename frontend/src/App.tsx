@@ -13,7 +13,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<AuthLayout />} />
-            <Route path="/share/:sharelink" element={<PublicBrain />} />
+            <Route path="/brain/:sharelink" element={<PublicBrain />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/dashboard" element={<Dashboard />}>
                 <Route index element={<ContentFeed />} />

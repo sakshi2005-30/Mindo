@@ -31,7 +31,7 @@ export const ShareBrainModal = ({ isOpen, onClose }: ShareBrainModalProps) => {
       const response = await api.post("/brain/share", { share: enable });
 
       if (enable && response.data.hash) {
-        const fullLink = `${window.location.origin}/share/${response.data.hash}`;
+        const fullLink = `${window.location.origin}/brain/${response.data.hash}`;
         setShareUrl(fullLink);
       } else if (!enable) {
         setShareUrl("");
