@@ -10,7 +10,7 @@ export const AuthLayout = () => {
     <div className="w-screen h-screen min-h-screen grid grid-cols-1 md:grid-cols-2 overflow-hidden bg-white">
       {/* Left Side: Visual/Branding Section */}
       <div className="hidden md:flex flex-col justify-between p-12 lg:p-16 bg-gradient-to-br from-blue via-blue to-slate-500 text-white relative overflow-hidden">
-        {/* Subtle Glow Accents */}
+       
         <div className="absolute -top-24 -left-24 w-72 h-72 bg-blue-500/30 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-indigo-500/30 rounded-full blur-3xl pointer-events-none" />
 
